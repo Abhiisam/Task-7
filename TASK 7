@@ -1,0 +1,37 @@
+Q:1 write a python program using function to which will do the following 
+a.) the function will create a text file with the current timestamp.
+b.)the file content should have the content of the current timestamp.
+
+import datetime
+
+def create_timestamp_file_with_content():
+    current_time = datetime.datetime.now()
+    formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")  # Format the timestamp
+
+    file_name = f"timestamp_content_{formatted_time}.txt"  # Create a file name with timestamp
+
+    try:
+        with open(file_name, 'w') as file:
+            file.write(f"This file was created at: {formatted_time}")
+        print(f"File '{file_name}' created successfully.")
+    except Exception as e:
+        print(f"Error creating file: {str(e)}")
+
+# Call the function to create the file
+create_timestamp_file_with_content()
+
+Q:2 write another python function to read from a text file. the function will take the name of the text file and display the content of the file into the console
+
+def read_text_file(file_name):
+    try:
+        with open(file_name, 'r') as file:
+            content = file.read()
+            print(f"Content of '{file_name}':\n{content}")
+    except FileNotFoundError:
+        print(f"File '{file_name}' not found.")
+    except Exception as e:
+        print(f"Error reading file: {str(e)}")
+
+# Example usage: replace 'file_name.txt' with your actual file name
+file_name = 'your_file_name.txt'
+read_text_file(file_name)
